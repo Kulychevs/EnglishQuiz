@@ -7,10 +7,9 @@ namespace EnglishQuiz
     {
         #region Fields
 
-        private const int FIRST_SEPARATORS_BEGIN = 32;
-        private const int FIRST_SEPARATORS_END = 64;
-        private const int SECOND_SEPARATORS_BEGIN = 91;
-        private const int SECOND_SEPARATORS_END = 96;
+        private const int SEPARATORS_BEGIN = 0;
+        private const int SEPARATORS_END = 127;
+        private const int ALPHAS_AMOUNT = 52;
 
         private readonly char[] _separators;
         private readonly HashSet<string> _usedWords;
@@ -24,17 +23,16 @@ namespace EnglishQuiz
 
         public ATextReader(int minLength)
         {
-            int count = FIRST_SEPARATORS_END - FIRST_SEPARATORS_BEGIN + 1;
-            count += SECOND_SEPARATORS_END - SECOND_SEPARATORS_BEGIN + 1;
+            int count = SEPARATORS_END - SEPARATORS_BEGIN + 1 - ALPHAS_AMOUNT;
             _separators = new char[count];
             int i = 0;
-            for (int j = FIRST_SEPARATORS_BEGIN; j < FIRST_SEPARATORS_END; j++, i++)
+            for (int j = SEPARATORS_BEGIN; j <= SEPARATORS_END; j++)
             {
-                _separators[i] = (char)j;
-            }
-            for (int j = SECOND_SEPARATORS_BEGIN; j < SECOND_SEPARATORS_END; j++, i++)
-            {
-                _separators[i] = (char)j;
+                if (!IsAlpha((char)j))
+                {
+                    _separators[i] = (char)j;
+                    i++;
+                }
             }
 
             _usedWords = new HashSet<string>();
@@ -87,6 +85,13 @@ namespace EnglishQuiz
         private void CheckWorkWordsLength()
         {
             _workWords = _workWords.FindAll((s) => s.Length >= _minLength && _usedWords.Add(s));
+        }
+        private bool IsAlpha(char c)
+        {
+            if ((c >= 'a' && c <= 'z')
+                || (c >= 'A' && c <= 'Z'))
+                return true;
+            return false;
         }
 
         #endregion

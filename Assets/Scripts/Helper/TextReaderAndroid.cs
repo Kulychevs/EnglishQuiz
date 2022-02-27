@@ -9,6 +9,7 @@ namespace EnglishQuiz
 
         private readonly TextAsset _textAsset;
         private int _index;
+        private bool _canGetNewWords;
 
         #endregion
 
@@ -19,6 +20,7 @@ namespace EnglishQuiz
         {
             _textAsset = Resources.Load<TextAsset>(path);
             _index = 0;
+            _canGetNewWords = true;
         }
 
         #endregion
@@ -31,24 +33,27 @@ namespace EnglishQuiz
         {
             base.Init();
             _index = 0;
+            _canGetNewWords = true;
         }
 
         protected override bool GetNewWorkWords()
         {
+            if (!_canGetNewWords) 
+                return false;
+
             string line;
-            var canGetNewWords = true;
             var endl = _textAsset.text.IndexOf('\n', _index);
             if (endl == -1)
             {
                 line = _textAsset.text.Substring(_index);
-                canGetNewWords = false;
+                _canGetNewWords = false;
             }
             else
-                line = _textAsset.text.Substring(_index, endl - _index - 1);
+                line = _textAsset.text.Substring(_index, endl - _index);
             _index = endl + 1;
             AddToWorkWords(line);
 
-            return canGetNewWords;
+            return true;
         }
 
         #endregion

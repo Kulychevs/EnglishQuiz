@@ -17,7 +17,7 @@ namespace EnglishQuiz
         private readonly List<LetterCellController> _cells;
         private readonly WordView _wordView;
         private readonly GOCreator<LetterCellView> _creator;
-        private readonly TextReader _textReader;
+        private readonly ATextReader _textReader;
 
         #endregion
 
@@ -29,7 +29,11 @@ namespace EnglishQuiz
             _cells = new List<LetterCellController>();
             _wordView = GameObject.FindObjectOfType<WordView>();
             _creator = new GOCreator<LetterCellView>(prefab, _wordView.GetGridTransform);
+#if UNITY_ANDROID || UNITY_WEBGL
+            _textReader = new TextReaderAndroid(pathToFile, minWordLength);
+#else
             _textReader = new TextReader(pathToFile, minWordLength);
+#endif
             _wordView.SetActive(false);
         }
 

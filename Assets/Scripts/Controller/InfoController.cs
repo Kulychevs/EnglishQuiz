@@ -65,7 +65,6 @@ namespace EnglishQuiz
 
         public void Clear()
         {
-            _infoView.SetActive(false);
         }
 
         #endregion

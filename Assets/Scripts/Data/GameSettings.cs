@@ -8,7 +8,7 @@ namespace EnglishQuiz
     {
         [SerializeField] private LetterButtonView _letterButtonPrefab;
         [SerializeField] private LetterCellView _letterCellPrefab; 
-        [SerializeField][Tooltip("In StreamingAssets")] private string _pathToFile;
+        [SerializeField][Tooltip("to .txt in StreamingAssets or Resources(Android)")] private string _pathToFile;
         [SerializeField][Min(1)] private int _minWordLength = 1;
         [SerializeField][Min(0)] private int _attempts = 5;
 

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _letterButtonPrefab: {fileID: 1808129681744015913, guid: be4e0a81b2baca34f89a1213000d3675, type: 3}
   _letterCellPrefab: {fileID: 4795200161005448110, guid: 518e6a54688643e4d8e54a5a6fb5aa22, type: 3}
-  _pathToFile: alice30.txt
+  _pathToFile: alice30
   _minWordLength: 3
   _attempts: 7

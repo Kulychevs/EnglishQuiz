@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70fcfb50ddfc90a4d960f5229e6ff818, type: 3}
+  m_Name: GameSettings
+  m_EditorClassIdentifier: 
+  _letterButtonPrefab: {fileID: 1808129681744015913, guid: be4e0a81b2baca34f89a1213000d3675, type: 3}
+  _letterCellPrefab: {fileID: 4795200161005448110, guid: 518e6a54688643e4d8e54a5a6fb5aa22, type: 3}
+  _pathToFile: alice30.txt
+  _minWordLength: 3
+  _attempts: 7
